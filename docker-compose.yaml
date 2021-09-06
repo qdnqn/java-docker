@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  postgres:
+    image: docker.io/postgres:10
+    restart: always
+    environment:
+      - 'POSTGRES_DB=demodb'
+      - 'POSTGRES_USER=demouser'
+      - 'POSTGRES_PASSWORD=DemoPa$$$$'
+    ports:
+      - "5432:5432"
+
+  spring_app:
+    build: spring
+    image: task/spring-app:1.0.0
+    depends_on:
+      - "postgres"
+    ports:
+      - "8080:8080"
+      
+  node_app:
+    build: node
+    image: task/node-app:1.0.0
+    ports:
+      - "8081:8081"

@@ -1,0 +1,5 @@
+app.node.url: http://node_app:8081/
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/demodb
